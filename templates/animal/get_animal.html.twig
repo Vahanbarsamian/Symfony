@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} / {{ titre }}{% endblock %}
+
+{% block titre %}{{ titre }}{% endblock %}
+{% block body %}
+<div class="container-fluid">
+    
+        <div class="row align-items-center m-2 p-2">
+            <div class="col-2 text-center">
+                <img src="{{ asset('img/animaux/' ~ animal.name|lower ~'.png')}}" alt="{{ animal.name }}">
+            </div>
+            <div class="col-2 text-center">
+                <h1><a href="{{path('get_animal',{'id':animal.id})}}"></a>{{animal.name}}</h1>
+                <p class="text-left">Description : {{animal.description}}</p>
+                <p class="text-left">Poids : {{animal.poids}} kg</p>
+                <p class="text-left">Dangereux : 
+                    {% if animal.dangerous %}
+                        <span class="badge badge-danger rounded">oui</span>
+                    {% else %} 
+                        <span class="badge badge-success rounded">
+                    non </span>
+                    {% endif %}
+                 </p>
+
+            </div>
+        </div>
+</div>
+{% endblock %}
