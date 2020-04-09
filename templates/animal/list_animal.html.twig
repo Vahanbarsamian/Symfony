@@ -13,6 +13,7 @@
             <div class="col-2 text-center">
                 <h1><a href="{{path('get_animal',{'id':animal.id})}}">{{animal.name}}</a></h1>
                 <p class="text-center">Description : {{animal.description}}</p>
+                <p><a href="#" class="btn btn-primary rounded">{{animal.famille.libelle}}</a></p>
             </div>
         </div>
     {% endfor %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} / {{titre}}{% endblock %}
+
+{% block titre %}{{titre}}{% endblock %}
+{% block body %}
+    {% for famille in familles %}
+    <div class="row align-items-center">
+        <div class="ml-3 p-3">
+            <h2> {{ famille.libelle | capitalize }} </h2> 
+            <p> Description : {{ famille.description }} </p> 
+            <h3>Animaux associés</h3>
+            {% for animal in famille.animaux %}
+                <p>{{ animal.name }}</p>
+            {% endfor %}
+        </div>
+            <div class="form-group col-12">
+                        <hr>
+            </div>
+    </div>
+    {% endfor %}
+{% endblock %}
