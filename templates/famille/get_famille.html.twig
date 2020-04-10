@@ -2,10 +2,10 @@
 
 {% block title %} / {{ titre }}{% endblock %}
 
-{% block titre %}{{ titre }}{% endblock %}
+{% block titre %} Animaux de la <a href="{{path('list_famille')}}">famille</a> : {{ famille.libelle }}{% endblock %}
 {% block body %}
 <div class="container-fluid">
-    {% for animal in animaux %}
+    {% for animal in famille.animaux %}
         <div class="row align-items-center m-2 p-2">
             <div class="col-2 text-center">
                 <img src="{{ asset('img/animaux/' ~ animal.name|lower ~'.png')}}" alt="{{ animal.name }}">
@@ -13,7 +13,7 @@
             <div class="col-2 text-center">
                 <h1><a href="{{path('get_animal',{'id':animal.id})}}">{{animal.name}}</a></h1>
                 <p class="text-center">Description : {{animal.description}}</p>
-                <p><a href="{{path('get_famille',{'id':animal.famille.id})}}" class="btn btn-primary rounded">{{animal.famille.libelle}}</a></p>
+                <p><a href="{{path('list_animals')}}" class="btn btn-primary rounded" title="Liste des animaux">Retour</a></p>
             </div>
         </div>
     {% endfor %}
