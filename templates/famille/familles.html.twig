@@ -1,22 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} / {{titre}}{% endblock %}
+{% block title %}
+	/
+	{{titre}}
+{% endblock %}
 
-{% block titre %}{{titre}}{% endblock %}
+{% block titre %}
+	{{titre}}
+{% endblock %}
 {% block body %}
-    {% for famille in familles %}
-    <div class="row align-items-center">
-        <div class="ml-3 p-3">
-            <h2> {{ famille.libelle | capitalize }} </h2> 
-            <p> Description : {{ famille.description }} </p> 
-            <h3>Animaux associés</h3>
-            {% for animal in famille.animaux %}
-                <p>{{ animal.name }}</p>
-            {% endfor %}
-        </div>
-            <div class="form-group col-12">
-                        <hr>
-            </div>
-    </div>
-    {% endfor %}
+	<div class="text-center">
+		{% for famille in familles %}
+			<h2><a href="{{path('get_famille',{'id':famille.id})}}">{{ famille.libelle | capitalize }}</a></h2>
+			<p>
+				Description :
+				{{ famille.description }}</p>
+			<div class="col-12 ml-3 p-3 text-center mx-auto">
+				<h3 class="mb-3">Animaux associés :</h3>
+				<div class="row align-items-end">
+					{% for animal in famille.animaux %}
+						<div class="col-lg-6 col-md-12 col-sm-12 mx-auto text-center">
+
+							<div class="col-12 col-md col-sm">
+								<img src="{{asset('img/animaux/'~ animal.name | lower ~ '.png')}}" alt="image de {{animal.name}}" class="img-fluid">
+							</div>
+							<div class="col-12 col-md col-sm">
+								<h3>
+									<a href="{{path('get_animal',{'id':animal.id })}}">{{ animal.name }}
+									</a>
+								</h3>
+								<div class="text-center">{{ animal.description }}</div>
+							</div>
+
+						</div>
+					{% endfor %}
+					<div class="form-group col-12"><hr></div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 {% endblock %}
