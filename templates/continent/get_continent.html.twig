@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block titre %} Liste des animaux présents en {{continent.libelle}} {% endblock %}
+{% block body %}
+    <div class="row align-items-top">
+        <div class="col-4 text-center">
+            {% for cont in continents %}
+                {% if cont != continent %}
+                    <a href="{{path('get_continent',{'id':cont.id})}}" class="badge badge-primary p-2 rounded">{{cont.libelle}}</a>
+                {% endif %}
+            {% endfor %}
+            <div class="col-12 mt-5">
+                    <div class="row align-items-bottom">
+                        {% for animal in animaux %} 
+                            <div class="text-center col mx-auto">
+                                <a href="{{path('get_animal',{'id':animal.id})}}"  class="btn btn-warning rounded px-3 py-2">{{animal.name}}</a>
+                                <div>
+                                    <img src="{{asset('img/animaux/'~ animal.name ~ '.png')}}" alt="{{animal.name}}"class="mt-3 mb-3">
+                                </div>
+                                <div class="mb-5">
+                                    <span><a href="{{path('get_famille',{'id':animal.famille.id})}}" class="badge badge-success rounded">{{animal.famille.libelle}}</a></span>
+                                </div>
+                            </div>
+                       {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

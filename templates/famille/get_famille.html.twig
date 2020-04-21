@@ -14,6 +14,11 @@
                 <h1><a href="{{path('get_animal',{'id':animal.id})}}">{{animal.name}}</a></h1>
                 <p class="text-center">Description : {{animal.description}}</p>
                 <p><a href="{{path('list_animals')}}" class="btn btn-primary rounded" title="Liste des animaux">Retour</a></p>
+                <div>
+                {% for continent in animal.continents %}
+                    <a href="{{path('get_continent',{'id':continent.id})}}" class="badge badge-success rounded">{{ continent.libelle }}</a>
+                {% endfor %}
+                </div>
             </div>
         </div>
     {% endfor %}

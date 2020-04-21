@@ -10,10 +10,13 @@
             <div class="col-2 text-center">
                 <img src="{{ asset('img/animaux/' ~ animal.name|lower ~'.png')}}" alt="{{ animal.name }}">
             </div>
-            <div class="col-2 text-center">
+            <div class="col-3 text-center">
                 <h1><a href="{{path('get_animal',{'id':animal.id})}}">{{animal.name}}</a></h1>
                 <p class="text-center">Description : {{animal.description}}</p>
                 <p><a href="{{path('get_famille',{'id':animal.famille.id})}}" class="btn btn-primary rounded">{{animal.famille.libelle}}</a></p>
+                {% for continent in animal.continents %}
+                    <a href="{{path('get_continent',{'id':continent.id})}}" class="badge badge-warning rounded p-2">{{ continent.libelle }}</a>
+                {% endfor %}
             </div>
         </div>
     {% endfor %}
