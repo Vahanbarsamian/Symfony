@@ -31,7 +31,11 @@
 								</h3>
 								<div class="text-center">{{ animal.description }}</div>
 							</div>
-
+								<div>
+								{% for continent  in animal.continents %}
+									<span><a href="{{path('get_continent',{'id':continent.id})}}" class="badge badge-warning">{{continent.libelle}}</a></span>	
+								{% endfor %}
+								</div>
 						</div>
 					{% endfor %}
 					<div class="form-group col-12"><hr></div>

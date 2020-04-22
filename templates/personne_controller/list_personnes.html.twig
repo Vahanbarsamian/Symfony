@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} / {{titre}}{% endblock %}
+
+{% block body %}
+{% for personne in personnes %}
+    <div class='row align-items-center'>
+       <div class="col-1"><h3 class="display-3"><a href="{{path('get_personne',{'id':personne.id})}}" class="badge badge-primary rounded m-2 p-2">{{personne.name}}</a></h3></div>
+        Détient :
+        <div class="col-2">
+            {% for  dispose in personne.disposes  %}
+            <div>
+                <h4>{{dispose.nb}} <a href="{{path('get_animal',{'id':dispose.animal.id})}}" class="badge badge-warning p2 rounded">{{dispose.animal.name}}</a></h4>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+<hr class="mt-5 mb-5 w-75">
+{% endfor %}
+{% endblock %}

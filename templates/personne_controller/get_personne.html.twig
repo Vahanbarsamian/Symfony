@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} / {{titre}}{% endblock %}
+
+{% block titre %}
+    {{titre}}
+{% endblock %}
+{% block body %}
+<div class='row align-items-center'>
+    <div class="col-1 ml-3 p-2"><h3 class="display-3"><a href="{{path('get_personne',{'id':personne.id})}}" class="badge badge-primary rounded m-2 p-2">{{personne.name}}</a></h3></div>
+    Détient :
+    <div class="col-2">
+        {% for  dispose in personne.disposes  %}
+        <div>
+            <h4>{{dispose.nb}} <a href="{{path('get_animal',{'id':dispose.animal.id})}}" class="badge badge-warning p2 rounded">{{dispose.animal.name}}</a></h4>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="row align-items-center">
+<div class="col-2 text-right ml-1 p-0">liste des personnes possédant un animal:</div>
+    {% for pers in personnes %}
+        {% if pers.id != personne.id %}
+        <div class="col-auto"><h4><a href="{{path('get_personne',{'id':pers.id})}}" class="badge badge-info rounded">{{pers.name}}</a></h4></div>  
+        {% endif %}
+    {% endfor %}
+</div>
+<hr class="mt-5 mb-5 w-75">
+{% endblock %}
