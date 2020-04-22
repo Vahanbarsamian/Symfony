@@ -112,7 +112,9 @@ class AnimalFixtures extends Fixture
             ->setPoids(300)
             ->setDangerous(true)
             ->setFamille($f2)
-            ->addContinent($c2)->addContinent($c4)->addContinent($c5);
+            ->addContinent($c2)
+            ->addContinent($c4)
+            ->addContinent($c5);
         $manager->persist($a3);
 
         $a4 = new Animal();
@@ -122,7 +124,8 @@ class AnimalFixtures extends Fixture
             ->setPoids(200)
             ->setDangerous(true)
             ->setFamille($f3)
-            ->addContinent($c4)->addContinent($c5);
+            ->addContinent($c4)
+            ->addContinent($c5);
         $manager->persist($a4);
 
         $a5 = new Animal();
@@ -132,7 +135,9 @@ class AnimalFixtures extends Fixture
             ->setPoids(1)
             ->setDangerous(true)
             ->setFamille($f2)
-            ->addContinent($c2)->addContinent($c3)->addContinent($c5);
+            ->addContinent($c2)
+            ->addContinent($c3)
+            ->addContinent($c5);
         $manager->persist($a5);
 
         /**

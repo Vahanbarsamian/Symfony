@@ -30,6 +30,13 @@
                         {% endfor %}
                     </p>
                 </div>
+                <div class="text-left mb-3">est détenu par :
+                    <p>
+                        {% for dispose in animal.disposes %}
+                            <a href="{{path('get_personne',{'id':dispose.personne.id})}}" class="badge badge-info rounded p-2">{{ dispose.personne.name }}</a>
+                        {% endfor %}
+                    </p>
+                </div>
             </div>
         </div>
 </div>

@@ -197,7 +197,6 @@ class Animal
                 $dispose->setAnimal(null);
             }
         }
-
         return $this;
     }
 }

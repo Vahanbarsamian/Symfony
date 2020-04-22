@@ -6,12 +6,17 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
+ * Class Dispose
+ * 
  * @ORM\Entity(repositoryClass="App\Repository\DisposeRepository")
  * @UniqueEntity(fields = {"animal,personne"},message ="errorMessage")
  */
 class Dispose
 {
+
     /**
+     * @var int $id
+     * 
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -19,18 +24,24 @@ class Dispose
     private $id;
 
     /**
+     * @var int $animal
+     * 
      * @ORM\ManyToOne(targetEntity="App\Entity\Animal", inversedBy="disposes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $animal;
 
     /**
+     * @var int $personne
+     * 
      * @ORM\ManyToOne(targetEntity="App\Entity\Personne", inversedBy="disposes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $personne;
 
     /**
+     * @var int $nb
+     * 
      * @ORM\Column(type="integer", nullable=true)
      */
     private $nb;
