@@ -15,46 +15,46 @@ use Symfony\Component\Routing\Annotation\Route;
 class PersonneController extends AbstractController
 {
 
-    /** 
+    /**
      * This return all persons
-     * 
+     *
      * @param PersonneRepository $repo call the repository
-     * 
+     *
      * @return void
-     * 
+     *
      * @Route("/personnes", name="list_personnes")
      */
     public function listAction(PersonneRepository $repo)
     {
         $personnes = $repo->findAll();
         return $this->render(
-            'personne_controller/list_personnes.html.twig', 
+            'personne_controller/list_personnes.html.twig',
             [
-            'titre' => 'Liste des personnes possédant un animal',
-            'personnes' => $personnes,
+                'titre' => 'Liste des personnes possédant un animal',
+                'personnes' => $personnes,
             ]
         );
     }
-    
-    /** 
+
+    /**
      * This return one person
-     * 
+     *
      * @param class Personne                $personne represent a person
      * @param repository PersonneRepository $repo     call the repository
-     * 
+     *
      * @return void
-     * 
+     *
      * @Route("/personne/{id}",name="get_personne")
      */
     public function getAction(Personne $personne, PersonneRepository $repo)
     {
         $personnes = $repo->findAll();
         return $this->render(
-            'personne_controller/get_personne.html.twig', 
+            'personne_controller/get_personne.html.twig',
             [
-                'titre'=>'Voici la liste des animaux détenu par '.$personne->getName(),
-                'personne'=> $personne,
-                'personnes'=>$personnes
+                'titre' => 'Voici la liste des animaux détenu par ' . $personne->getName(),
+                'personne' => $personne,
+                'personnes' => $personnes,
             ]
         );
     }
